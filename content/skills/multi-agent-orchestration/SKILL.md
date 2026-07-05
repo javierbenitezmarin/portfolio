@@ -5,6 +5,10 @@ description: Design agentic workflows with LangChain and LangGraph that stay obs
 
 # Multi-Agent Orchestration
 
+Once a task is too big for a single prompt, you are really building a distributed system with
+a language model in the loop. The hard part is not the agents, it is keeping the whole thing
+observable and recoverable.
+
 ## Approach
 
 1. **Decompose** — model the workflow as a graph of specialised agents and tools.

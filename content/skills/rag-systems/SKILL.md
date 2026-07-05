@@ -5,6 +5,9 @@ description: Build retrieval-augmented generation pipelines grounded in enterpri
 
 # RAG Systems
 
+An LLM answering over your own data is only useful if it stops making things up. This is about
+grounding it in a private corpus and actually measuring whether the answers hold up.
+
 ## Approach
 
 1. **Chunk & embed** — structure-aware chunking, embeddings stored in a vector DB.

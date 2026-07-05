@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { VscOpenPreview, VscCode } from 'react-icons/vsc';
@@ -43,6 +44,17 @@ const markdownComponents: Components = {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={src} alt={alt ?? ''} />
       </DiagramFrame>
+    );
+  },
+  a(props) {
+    const { href, children } = props;
+    if (typeof href === 'string' && href.startsWith('/')) {
+      return <Link href={href}>{children}</Link>;
+    }
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {children}
+      </a>
     );
   },
 };

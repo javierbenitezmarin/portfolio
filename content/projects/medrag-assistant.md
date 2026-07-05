@@ -9,16 +9,16 @@ year: 2026
 > **Personal proof-of-concept.** Being prepared for open source.
 
 A stateful agentic system that answers clinical questions over the **StatPearls** medical
-corpus using **Corrective RAG (CRAG)** orchestrated by **LangGraph**. It combines two-tier
+corpus using **Corrective RAG (CRAG)**, orchestrated by **LangGraph**. It leans on two-tier
 semantic caching, cross-encoder reranking, adaptive retrieval, and query decomposition with
-medical-term normalization — deployed fully serverless on GCP.
+medical-term normalization, and it runs fully serverless on GCP.
 
 ## Why I built it
 
-To push a RAG system past the demo stage: make it *correct* (grade retrieved context and
-self-correct), *cheap* (semantic caching + adaptive retrieval), and *operable* (serverless,
-fully traced). Medicine is an unforgiving domain for hallucination, which makes it a good
-stress test for grounding.
+I wanted to take a RAG system past the demo stage. In practice that means three things I
+usually see skipped: grading the retrieved context and self-correcting when it is weak,
+keeping cost down with caching and adaptive retrieval, and making the whole thing observable.
+Medicine is unforgiving about hallucination, so it is a good place to stress-test grounding.
 
 ## Architecture
 

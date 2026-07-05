@@ -1,6 +1,6 @@
 import { projects } from '@/data/projects';
 import { posts } from '@/data/posts';
-import { skills } from '@/data/skills';
+import { hardSkills, softSkills, workflowSkills, Skill } from '@/data/skills';
 
 export type FileIconType =
   | 'markdown'
@@ -28,6 +28,26 @@ export interface FolderNode {
 
 export type TreeNode = FileNode | FolderNode;
 
+const skillFolder = (skill: Skill): FolderNode => ({
+  type: 'folder',
+  name: skill.slug,
+  id: `skill-${skill.slug}`,
+  children: [
+    {
+      type: 'file',
+      name: 'SKILL.md',
+      path: `/skills/${skill.slug}`,
+      icon: 'skill',
+    },
+    ...(skill.references ?? []).map((ref) => ({
+      type: 'file' as const,
+      name: ref.name,
+      path: `/skills/${skill.slug}/${ref.slug}`,
+      icon: 'markdown' as const,
+    })),
+  ],
+});
+
 export const fileTree: FolderNode = {
   type: 'folder',
   name: 'portfolio',
@@ -41,25 +61,24 @@ export const fileTree: FolderNode = {
       name: 'skills',
       id: 'skills',
       defaultOpen: true,
-      children: skills.map((skill) => ({
-        type: 'folder' as const,
-        name: skill.slug,
-        id: `skill-${skill.slug}`,
-        children: [
-          {
-            type: 'file' as const,
-            name: 'SKILL.md',
-            path: `/skills/${skill.slug}`,
-            icon: 'skill' as const,
-          },
-          ...(skill.references ?? []).map((ref) => ({
-            type: 'file' as const,
-            name: ref.name,
-            path: `/skills/${skill.slug}/${ref.slug}`,
-            icon: 'markdown' as const,
-          })),
-        ],
-      })),
+      children: [
+        { type: 'file', name: 'README.md', path: '/skills', icon: 'markdown' },
+        {
+          type: 'folder',
+          name: 'hard',
+          id: 'skills-hard',
+          defaultOpen: true,
+          children: hardSkills.map(skillFolder),
+        },
+        {
+          type: 'folder',
+          name: 'soft',
+          id: 'skills-soft',
+          defaultOpen: true,
+          children: softSkills.map(skillFolder),
+        },
+        ...workflowSkills.map(skillFolder),
+      ],
     },
     { type: 'file', name: 'experience.md', path: '/experience', icon: 'markdown' },
     {

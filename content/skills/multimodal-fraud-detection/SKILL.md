@@ -5,6 +5,10 @@ description: Combine Computer Vision with multimodal LLMs to inspect documents a
 
 # Multimodal Fraud Detection
 
+Some fraud only shows up when you look at the document as an image: a tampered field, a font
+that does not match, a layout that is slightly off. Text extraction walks right past it. This
+pairs computer vision with multimodal LLMs to catch it.
+
 ## Approach
 
 1. **Visual inspection** — CV models flag manipulated regions, inconsistent fonts, and

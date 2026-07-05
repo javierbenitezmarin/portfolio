@@ -5,6 +5,9 @@ description: Turn heterogeneous unstructured documents (invoices, contracts, rep
 
 # Document Intelligence
 
+Most business documents are a mess: scans, odd layouts, no two vendors the same. This is
+about pulling reliable structured data out of that mess so the rest of a system can trust it.
+
 ## Approach
 
 1. **Ingest & normalize** — OCR and layout parsing (Azure Document Intelligence) across

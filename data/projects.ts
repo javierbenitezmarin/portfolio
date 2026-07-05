@@ -12,7 +12,7 @@ export const projects: Project[] = [
     title: 'MedRAG — Clinical Guidelines Assistant',
     slug: 'medrag-assistant',
     description:
-      'A stateful Corrective-RAG (CRAG) agent over the StatPearls medical corpus, built with LangGraph — two-tier semantic caching, cross-encoder reranking, adaptive retrieval, and query decomposition with medical-term normalization. Serverless on GCP.',
+      'A clinical-question agent that answers over a medical corpus without making things up. Built with LangGraph using Corrective RAG, semantic caching, and reranking, running fully serverless on GCP.',
     stack: [
       'LangGraph',
       'Vertex AI',
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     title: 'Agentic CX — Multi-Agent Spike',
     slug: 'cx-multi-agent-spike',
     description:
-      'A local-first multi-agent customer-service system. A LangGraph Front Agent detects intent and dispatches to specialist agents through durable Temporal workflows; specialists call tools over MCP and read/write a three-layer memory, fully traced in Langfuse.',
+      'A local-first customer-service system built as multiple agents. A LangGraph front agent routes each request to a specialist through durable Temporal workflows, with tools over MCP and a three-layer memory. Runs on a laptop, and every step is traced.',
     stack: [
       'LangGraph',
       'Temporal',

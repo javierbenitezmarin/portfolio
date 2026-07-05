@@ -32,9 +32,10 @@ export default function HomePage() {
             <div className={styles.divider} />
 
             <p className={styles.description}>
-              I build Generative AI and Computer Vision systems that survive contact 
-              with the real world. Comfortable across the whole stack — from infrastructure 
-              and CI/CD up to LLM pipelines, RAG, and multi-agent orchestration.
+              I build AI systems that actually make it to production. My strength is the 
+              end-to-end view: taking a messy problem, seeing its whole shape, and 
+              orchestrating the pieces. These days that means agentic systems — LLM 
+              pipelines, RAG, and multi-agent work.
             </p>
           </div>
 
