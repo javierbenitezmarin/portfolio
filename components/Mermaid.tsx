@@ -3,6 +3,7 @@
 import { useEffect, useId, useState } from 'react';
 import mermaid from 'mermaid';
 
+import DiagramFrame from '@/components/DiagramFrame';
 import styles from '@/styles/Markdown.module.css';
 
 let initialized = false;
@@ -57,10 +58,12 @@ const Mermaid = ({ chart }: { chart: string }) => {
   }
 
   return (
-    <div
-      className={styles.mermaid}
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
+    <DiagramFrame variant="mermaid">
+      <span
+        style={{ display: 'block' }}
+        dangerouslySetInnerHTML={{ __html: svg }}
+      />
+    </DiagramFrame>
   );
 };
 

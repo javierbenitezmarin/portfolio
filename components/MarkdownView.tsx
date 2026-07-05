@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm';
 import { VscOpenPreview, VscCode } from 'react-icons/vsc';
 
 import Mermaid from '@/components/Mermaid';
+import DiagramFrame from '@/components/DiagramFrame';
 import styles from '@/styles/Markdown.module.css';
 
 const isMermaidElement = (child: unknown): boolean => {
@@ -31,6 +32,18 @@ const markdownComponents: Components = {
       return <>{children}</>;
     }
     return <pre>{children}</pre>;
+  },
+  img(props) {
+    const { src, alt } = props;
+    if (typeof src !== 'string') {
+      return null;
+    }
+    return (
+      <DiagramFrame variant="image">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={src} alt={alt ?? ''} />
+      </DiagramFrame>
+    );
   },
 };
 
@@ -106,7 +119,10 @@ const MarkdownView = ({
               ))}
             </div>
           )}
-          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={markdownComponents}
+          >
             {content}
           </ReactMarkdown>
         </article>

@@ -1,0 +1,156 @@
+.frame {
+  display: block;
+  margin: 1.5rem 0 2rem;
+  text-align: center;
+}
+
+.inline {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  cursor: zoom-in;
+  border-radius: 10px;
+  border: 1px solid var(--tab-border, #30363d);
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.surface {
+  display: block;
+  padding: 1.5rem;
+}
+
+.image {
+  background: #ffffff;
+}
+
+.mermaidSurface {
+  background: var(--tab-bg, rgba(255, 255, 255, 0.02));
+}
+
+.surface :global(img),
+.surface :global(svg) {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.expand {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--tab-border, #30363d);
+  border-radius: 6px;
+  background: rgba(13, 17, 23, 0.75);
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s;
+}
+
+.inline:hover .expand {
+  opacity: 1;
+}
+
+.expand:hover {
+  background: rgba(13, 17, 23, 0.95);
+}
+
+/* Fullscreen overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(2px);
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 10px;
+  background: rgba(22, 27, 34, 0.9);
+  border: 1px solid var(--tab-border, #30363d);
+}
+
+.toolbar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: rgb(200, 205, 212);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.toolbar button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.transformWrapper {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+
+.transformWrapper:active {
+  cursor: grabbing;
+}
+
+.transformContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalSurface {
+  border-radius: 12px;
+  border: 1px solid var(--tab-border, #30363d);
+  max-width: 92vw;
+}
+
+.mermaidSurface.modalSurface {
+  width: min(82vw, 1050px);
+}
+
+.mermaidSurface.modalSurface :global(svg) {
+  max-width: 100% !important;
+  width: 100% !important;
+  height: auto;
+}
+
+.hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: 'Source Sans Pro', sans-serif;
+  pointer-events: none;
+}
+
+@media screen and (max-width: 600px) {
+  .modalSurface {
+    max-width: 96vw;
+  }
+}

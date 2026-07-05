@@ -78,33 +78,6 @@
   word-break: break-word;
 }
 
-.mermaid {
-  display: flex;
-  justify-content: center;
-  margin: 1.5rem 0 2rem;
-  padding: 1.25rem;
-  background: var(--tab-bg, rgba(255, 255, 255, 0.02));
-  border: 1px solid var(--tab-border, #30363d);
-  border-radius: 10px;
-  overflow-x: auto;
-}
-
-.mermaid svg {
-  max-width: 100%;
-  height: auto;
-}
-
-.markdown img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 1.5rem auto 2rem;
-  padding: 1.5rem;
-  background: #ffffff;
-  border: 1px solid var(--tab-border, #30363d);
-  border-radius: 10px;
-}
-
 .markdown {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1rem;
