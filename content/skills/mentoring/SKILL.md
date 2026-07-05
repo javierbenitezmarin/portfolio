@@ -1,27 +1,29 @@
 ---
 name: mentoring
-description: Level up the people around me by sharing what I learn, and learn from them in return. Use when a team is better off spreading knowledge than hoarding it.
+description: Spread knowledge deliberately by preparing and teaching, not by hoarding it. Use when a team is better off with shared understanding than with one person holding all the context.
 ---
 
 # Mentoring
 
-I like making the people around me better, and I do not think that only flows downward. I
-learn as much from peers at my level as from senior teammates, and I try to keep my ego out
-of the way so that can happen.
+Sharing what you know is one of the highest-leverage things you can do on a team. It stops the
+same problem being solved twice and it compounds over time. The key is to do it deliberately —
+prepare and teach, don't just answer in passing.
 
-## How I approach it
+## Approach
 
-- **Share the learning.** When I figure something out, I write it down or explain it so the
-  next person does not have to rediscover it.
-- **Teach the why.** Handing someone a fix is fine; helping them see the reasoning is better.
-- **Stay a learner.** I ask questions freely. Not knowing something is a starting point, not
-  an embarrassment.
+- **Prepare like a teacher.** Do not wing it. Structure the explanation, pick a concrete
+  example, and think about where someone will get stuck. Preparing to teach is also the
+  fastest way to find the holes in your own understanding.
+- **Teach the why.** Handing over a fix solves today. Explaining the reasoning solves the next
+  ten times it comes up.
+- **Write it down.** Turn a good explanation into a doc, a note, or an update to the project
+  memory so it outlives the conversation.
 
-## What I believe
+## Defaults
 
-- Knowledge compounds when it is shared.
-- A team that teaches each other is harder to break than a team of silos.
+- Knowledge shared compounds; knowledge hoarded rots.
+- If you can teach it clearly, you actually understand it.
 
 ## Stack
 
-`Knowledge sharing` · `Documentation` · `Pairing & review`
+`Knowledge sharing` · `Technical writing` · `Pairing & review`

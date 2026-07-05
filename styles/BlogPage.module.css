@@ -46,6 +46,12 @@
   gap: 1rem;
 }
 
+.empty {
+  color: rgb(140, 148, 158);
+  font-size: 0.95rem;
+  padding: 1rem 0;
+}
+
 .card {
   display: block;
   padding: 1.25rem 1.5rem;

@@ -5,19 +5,30 @@ description: Build retrieval-augmented generation pipelines grounded in enterpri
 
 # RAG Systems
 
-An LLM answering over your own data is only useful if it stops making things up. This is about
-grounding it in a private corpus and actually measuring whether the answers hold up.
+An LLM over your own data is only useful if it stops guessing. Grounding and evaluation are
+the whole job; generation is the easy part.
 
 ## Approach
 
-1. **Chunk & embed** — structure-aware chunking, embeddings stored in a vector DB.
-2. **Retrieve** — hybrid retrieval with reranking to maximise relevance.
-3. **Ground** — constrain generation to retrieved context with citations.
-4. **Evaluate** — measure faithfulness and answer relevance, not vibes.
+- **Chunk with structure in mind.** Respect sections, tables, and headings when splitting.
+  Naive fixed-size chunks destroy the context that makes retrieval work.
+- **Retrieve, then rerank.** Combine dense and keyword retrieval for recall, then rerank with
+  a cross-encoder for precision. They are two different problems; do both.
+- **Ground and cite.** Constrain generation to the retrieved context and attach citations so
+  any claim can be traced back to a source.
+- **Correct when retrieval is weak.** Grade the retrieved context; if it is thin, rewrite the
+  query and retry (Corrective RAG) instead of answering from nothing.
+- **Evaluate for real.** Track faithfulness and answer relevance against an eval set. "Looks
+  good to me" is not a metric.
+
+## Defaults
+
+- Retrieval quality caps answer quality — spend your time there before touching the prompt.
+- A confident wrong answer is worse than "I don't know". Prefer abstention on weak context.
 
 ## Evidence
 
-- Conversational analytics agent on Snowflake Cortex letting management query enterprise
+- A conversational analytics agent on Snowflake Cortex letting management query enterprise
   data in natural language.
 - Vector-based research agents with semantic deduplication in an autonomous content pipeline.
 

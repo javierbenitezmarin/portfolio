@@ -29,6 +29,11 @@ export default function BlogPage() {
         </header>
 
         <div className={styles.list}>
+          {sorted.length === 0 && (
+            <p className={styles.empty}>
+              No posts yet. Writing is in progress — check back soon.
+            </p>
+          )}
           {sorted.map((post) => (
             <Link
               key={post.slug}

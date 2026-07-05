@@ -13,8 +13,8 @@ const contactItems = [
   },
   {
     social: 'linkedin',
-    link: 'javier-benitez-marin',
-    href: 'https://www.linkedin.com/in/javier-benitez-marin',
+    link: 'javier-benítez-marín',
+    href: 'https://www.linkedin.com/in/javier-ben%C3%ADtez-mar%C3%ADn-6748321b3/',
   },
   {
     social: 'location',

@@ -5,21 +5,31 @@ description: Turn heterogeneous unstructured documents (invoices, contracts, rep
 
 # Document Intelligence
 
-Most business documents are a mess: scans, odd layouts, no two vendors the same. This is
-about pulling reliable structured data out of that mess so the rest of a system can trust it.
+Reliable structured data is the foundation everything downstream sits on. Treat extraction as
+a data-quality problem, not a prompting trick.
 
 ## Approach
 
-1. **Ingest & normalize** — OCR and layout parsing (Azure Document Intelligence) across
-   heterogeneous formats.
-2. **Extract** — schema-driven extraction with LLMs, validated against Pydantic models.
-3. **Verify** — confidence scoring and human-in-the-loop review only where it matters.
+- **Normalize before you reason.** Run OCR and layout parsing (Azure Document Intelligence)
+  and reduce every format to a common representation before an LLM sees the page. Garbage in
+  poisons everything after it.
+- **Extract against a schema.** Drive extraction with an explicit Pydantic schema. Never
+  accept free-form JSON from the model; validate types, enums, and formats on the way out and
+  reject what does not fit.
+- **Score confidence and route.** Attach a per-field confidence signal and send only the
+  low-confidence fields to a human. Reviewing everything defeats the point of automating.
+- **Assume heterogeneity.** No two vendors format things the same. Prefer a few robust,
+  general extractors over one brittle template per document type.
+
+## Defaults
+
+- A tight schema removes more ambiguity than a longer prompt ever will.
+- Measure accuracy per field, not per document — one wrong total sinks the whole record.
 
 ## Evidence
 
-- High-throughput contract extraction system converting unstructured documents into
-  structured data.
-- Veterinary platform parsing invoices and reports into a queryable schema.
+- High-throughput contract extraction turning heterogeneous documents into structured data.
+- A veterinary platform parsing invoices and reports into a queryable schema.
 
 ## Stack
 

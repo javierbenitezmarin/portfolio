@@ -5,21 +5,20 @@ description: Own the outcome, not just the assigned task. Use when a project nee
 
 # Ownership & Reliability
 
-I take responsibility for the result, not just the ticket I was handed. If something breaks
-between two teams' code, I would rather fix it than argue about whose side it is on.
+Own the outcome, not just the assigned ticket. When something breaks between two teams' code,
+fix it rather than argue about whose side it is on.
 
-## How I approach it
+## Approach
 
-- **Follow it through.** From the messy data at the start to the thing running in production,
-  I stay with a problem until it actually works.
-- **Do the boring parts.** Tests, monitoring, and CI are not glamorous, but they are what make
-  a system trustworthy.
-- **Keep small promises.** Reliability is mostly just doing what I said I would do, on time.
+- **Follow it through.** Stay with a problem from the messy data at the start to the thing
+  running in production. "Done" means it works in the real environment, not on your machine.
+- **Do the unglamorous parts.** Tests, monitoring, and CI are what make a system trustworthy.
+- **Keep small promises.** Reliability is mostly doing what you said you would, on time.
 
-## What I believe
+## Defaults
 
 - "Not my code" is rarely a good enough answer.
-- The person who shipped it should be the person watching it in production.
+- Whoever shipped it should be the one watching it in production.
 
 ## Stack
 
