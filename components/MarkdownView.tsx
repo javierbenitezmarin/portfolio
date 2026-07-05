@@ -1,11 +1,38 @@
 'use client';
 
 import { useState } from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { VscOpenPreview, VscCode } from 'react-icons/vsc';
 
+import Mermaid from '@/components/Mermaid';
 import styles from '@/styles/Markdown.module.css';
+
+const isMermaidElement = (child: unknown): boolean => {
+  if (!child || typeof child !== 'object' || !('props' in child)) {
+    return false;
+  }
+  const className = (child as { props?: { className?: string } }).props
+    ?.className;
+  return typeof className === 'string' && className.includes('language-mermaid');
+};
+
+const markdownComponents: Components = {
+  code(props) {
+    const { className, children } = props;
+    if (className?.includes('language-mermaid')) {
+      return <Mermaid chart={String(children).trim()} />;
+    }
+    return <code className={className}>{children}</code>;
+  },
+  pre(props) {
+    const { children } = props;
+    if (isMermaidElement(children)) {
+      return <>{children}</>;
+    }
+    return <pre>{children}</pre>;
+  },
+};
 
 interface FrontmatterField {
   label: string;
@@ -79,7 +106,9 @@ const MarkdownView = ({
               ))}
             </div>
           )}
-          <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+          <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+            {content}
+          </ReactMarkdown>
         </article>
       ) : (
         <pre className={styles.raw}>

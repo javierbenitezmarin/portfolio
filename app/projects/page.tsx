@@ -29,8 +29,8 @@ const ProjectsPage = () => {
           <div className={styles.headerContent}>
             <h1 className={styles.title}>Featured Work</h1>
             <p className={styles.subtitle}>
-              A curated collection of projects I&apos;ve built. Each represents 
-              a unique challenge and learning experience.
+              Personal proof-of-concept projects I&apos;m preparing to open source. 
+              Each explores an agentic AI architecture end to end.
             </p>
           </div>
         </header>
@@ -48,13 +48,13 @@ const ProjectsPage = () => {
         <footer className={styles.footer}>
           <div className={styles.footerLine} />
           <a 
-            href="https://github.com/javierbenitezmarin?tab=repositories"
+            href="https://github.com/javierbenitezmarin"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.footerLink}
           >
             <VscGithub size={18} />
-            <span>Explore more on GitHub</span>
+            <span>Being prepared for open source — find me on GitHub</span>
             <VscLinkExternal size={14} />
           </a>
         </footer>
