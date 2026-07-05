@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { VscArrowRight, VscGithub, VscMail, VscCode } from 'react-icons/vsc';
+import Image from 'next/image';
+import { VscArrowRight, VscGithub, VscMail } from 'react-icons/vsc';
 
 import styles from '@/styles/HomePage.module.css';
 
@@ -11,8 +12,14 @@ export default function HomePage() {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.header}>
-            <div className={styles.icon}>
-              <VscCode size={32} />
+            <div className={styles.avatar}>
+              <Image
+                src="/foto_portfolio.png"
+                alt="Javier Benitez Marin"
+                width={128}
+                height={128}
+                priority
+              />
             </div>
           </div>
 

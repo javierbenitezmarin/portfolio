@@ -37,6 +37,7 @@
   overflow-y: auto;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scrollbar-gutter: stable both-edges;
 }
 
 .content {
