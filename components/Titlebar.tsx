@@ -1,14 +1,16 @@
 'use client';
 
 import Image from 'next/image';
+import { VscMenu } from 'react-icons/vsc';
 
 import styles from '@/styles/Titlebar.module.css';
 
 interface TitlebarProps {
   onOpenCommandPalette?: () => void;
+  onToggleExplorer?: () => void;
 }
 
-const Titlebar = ({ onOpenCommandPalette }: TitlebarProps) => {
+const Titlebar = ({ onOpenCommandPalette, onToggleExplorer }: TitlebarProps) => {
   const handleViewClick = () => {
     if (onOpenCommandPalette) {
       onOpenCommandPalette();
@@ -17,6 +19,14 @@ const Titlebar = ({ onOpenCommandPalette }: TitlebarProps) => {
 
   return (
     <section className={styles.titlebar}>
+      <button
+        type="button"
+        className={styles.hamburger}
+        onClick={onToggleExplorer}
+        aria-label="Toggle file explorer"
+      >
+        <VscMenu size={16} />
+      </button>
       <Image
         src="/logos/vscode_icon.svg"
         alt="VSCode Icon"

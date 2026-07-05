@@ -96,6 +96,30 @@
 
 @media screen and (max-width: 600px) {
   .explorer {
-    display: none;
+    position: fixed;
+    top: 30px;
+    left: 0;
+    bottom: 0;
+    width: 78vw;
+    max-width: 300px;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 2px 0 16px rgba(0, 0, 0, 0.45);
+    overflow-y: auto;
+  }
+
+  .explorerOpen {
+    transform: translateX(0);
+  }
+
+  .backdrop {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 49;
   }
 }

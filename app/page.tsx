@@ -11,27 +11,26 @@ export default function HomePage() {
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.header}>
-            <div className={styles.avatar}>
-              <Image
-                src="/foto_portfolio.png"
-                alt="Javier Benitez Marin"
-                width={128}
-                height={128}
-                priority
-              />
-            </div>
-          </div>
-
           <div className={styles.intro}>
-            <p className={styles.greeting}>Hello, I&apos;m</p>
-            
-            <h1 className={styles.name}>Javier Benitez Marin</h1>
-            
-            <p className={styles.role}>AI Engineer</p>
-            
+            <div className={styles.identity}>
+              <div className={styles.avatar}>
+                <Image
+                  src="/foto_portfolio.png"
+                  alt="Javier Benitez Marin"
+                  width={128}
+                  height={128}
+                  priority
+                />
+              </div>
+              <div className={styles.identityText}>
+                <p className={styles.greeting}>Hello, I&apos;m</p>
+                <h1 className={styles.name}>Javier Benitez Marin</h1>
+                <p className={styles.role}>AI Engineer</p>
+              </div>
+            </div>
+
             <div className={styles.divider} />
-            
+
             <p className={styles.description}>
               I build Generative AI and Computer Vision systems that survive contact 
               with the real world. Comfortable across the whole stack — from infrastructure 

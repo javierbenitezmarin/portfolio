@@ -18,6 +18,23 @@
   margin-left: 0.5rem;
 }
 
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 4px;
+  margin-right: 0.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .title {
   flex: 1;
   text-align: center;
@@ -67,5 +84,11 @@
   }
   .title {
     flex: 4;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hamburger {
+    display: flex;
   }
 }

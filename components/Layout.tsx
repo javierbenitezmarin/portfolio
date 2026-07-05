@@ -23,6 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+  const [isExplorerOpen, setIsExplorerOpen] = useState(false);
   const [chordKey, setChordKey] = useState<string | null>(null);
 
   const toggleTerminal = useCallback(() => {
@@ -42,6 +43,7 @@ const Layout = ({ children }: LayoutProps) => {
     if (main) {
       main.scrollTop = 0;
     }
+    setIsExplorerOpen(false);
   }, [pathname]);
 
   useEffect(() => {
@@ -105,10 +107,16 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <TabsProvider>
       <div className={styles.layout}>
-        <Titlebar onOpenCommandPalette={openCommandPalette} />
+        <Titlebar
+          onOpenCommandPalette={openCommandPalette}
+          onToggleExplorer={() => setIsExplorerOpen((prev) => !prev)}
+        />
         <div className={styles.main}>
           <Sidebar />
-          <Explorer />
+          <Explorer
+            isOpen={isExplorerOpen}
+            onClose={() => setIsExplorerOpen(false)}
+          />
           <div className={styles.editorContainer}>
             <Tabsbar />
             <div className={styles.editorWithTerminal}>

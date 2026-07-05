@@ -110,7 +110,13 @@ const TreeEntry = ({
   );
 };
 
-const Explorer = () => {
+const Explorer = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const [openFolders, setOpenFolders] = useState<Set<string>>(() => {
     const set = new Set<string>();
     collectDefaultOpen(fileTree, set);
@@ -130,15 +136,20 @@ const Explorer = () => {
   };
 
   return (
-    <div className={styles.explorer}>
-      <p className={styles.title}>Explorer</p>
-      <FolderEntry
-        node={fileTree}
-        depth={0}
-        openFolders={openFolders}
-        toggleFolder={toggleFolder}
-      />
-    </div>
+    <>
+      {isOpen && <div className={styles.backdrop} onClick={onClose} />}
+      <div
+        className={`${styles.explorer} ${isOpen ? styles.explorerOpen : ''}`}
+      >
+        <p className={styles.title}>Explorer</p>
+        <FolderEntry
+          node={fileTree}
+          depth={0}
+          openFolders={openFolders}
+          toggleFolder={toggleFolder}
+        />
+      </div>
+    </>
   );
 };
 
