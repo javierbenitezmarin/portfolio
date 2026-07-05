@@ -26,35 +26,7 @@ memory shared across processes) are visible and demonstrable.
 
 ## Architecture
 
-```mermaid
-flowchart TD
-    subgraph Local["Local machine — docker-compose + Python"]
-        Cust["Customer<br/>CLI REPL"]
-        Front["Front Agent<br/>intent · slots · memory"]
-        Temporal["Temporal Server<br/>durable state + scheduler"]
-        subgraph Worker["Worker — workflows + activities"]
-            Cancel["Cancel<br/>queue: cancel"]
-            Modify["Modify<br/>queue: modify"]
-            Redeem["Redeem<br/>queue: redeem"]
-        end
-        MCP["MCP Server<br/>FastMCP → fixtures"]
-        Redis[("Redis<br/>short-term · TTL 7d")]
-        Qdrant[("Qdrant<br/>long-term · 768-dim")]
-    end
-    subgraph Cloud["Cloud (GCP / SaaS)"]
-        Vertex["Vertex AI<br/>Gemini + embeddings"]
-        Langfuse["Langfuse<br/>LLM traces"]
-    end
-    Cust -->|message| Front
-    Front -->|start workflow| Temporal
-    Temporal -->|dispatch activity| Worker
-    Worker -->|MCP tools| MCP
-    Worker -->|short-term| Redis
-    Worker -->|long-term| Qdrant
-    Front -.->|LLM| Vertex
-    Worker -.->|"LLM + embeddings"| Vertex
-    Worker -.->|traces| Langfuse
-```
+![Agentic CX system architecture](/diagrams/cx/architecture.svg)
 
 ## The three-process model
 
@@ -62,6 +34,8 @@ The single most important idea in this spike: there are **three kinds of running
 with very different jobs. The Temporal *server* stores durable state and schedules work — it
 does **not** run the orchestration logic. The plan lives in **workflow code inside the
 worker**; the non-deterministic LLM work runs in **activities**.
+
+![The three-process model](/diagrams/cx/process-model.svg)
 
 | Process | Role | Runs our logic? |
 |---|---|---|
@@ -76,23 +50,7 @@ worker**; the non-deterministic LLM work runs in **activities**.
 
 ## Conversation flow
 
-```mermaid
-flowchart TD
-    M["Customer message"] --> I["Detect intent (LLM)"]
-    I --> S{"Slots valid?<br/>Pydantic"}
-    S -->|invalid| Reask["Re-ask · max 3"]
-    Reask --> S
-    S -->|"3× fail"| Esc["Escalate to human"]
-    S -->|valid| Route{"Intent"}
-    Route -->|cancel| WC["CancelOrderWorkflow"]
-    Route -->|modify| WM["ModifyOrderWorkflow"]
-    Route -->|redeem| WR["RedeemGiftCardWorkflow"]
-    Route -->|"out of scope"| Esc
-    WC --> Reply["Stream specialist reply"]
-    WM --> Reply
-    WR --> Reply
-    Reply --> Persist["Persist memory on session end"]
-```
+![Conversation and routing flow](/diagrams/cx/conversation-flow.svg)
 
 ## Three-layer memory
 
@@ -101,20 +59,7 @@ Session memory is in-process (LangGraph state); short- and long-term memory are
 data. Long-term recall is what lets the agent greet a returning customer with context from a
 previous conversation.
 
-```mermaid
-flowchart LR
-    subgraph Session["Session — in-process"]
-        LG["LangGraph state<br/>current conversation"]
-    end
-    subgraph Short["Short-term — Redis"]
-        RD[("exact key<br/>TTL 7 days")]
-    end
-    subgraph Long["Long-term — Qdrant"]
-        QD[("semantic similarity<br/>768-dim vectors")]
-    end
-    LG -->|"recent facts"| RD
-    LG -->|"semantic recall"| QD
-```
+![Three-layer memory](/diagrams/cx/memory-layers.svg)
 
 ## What makes it interesting
 
