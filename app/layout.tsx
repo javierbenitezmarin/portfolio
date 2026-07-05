@@ -6,12 +6,13 @@ import '@/styles/globals.css';
 import '@/styles/themes.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://javierbenitezmarin.dev'),
   title: {
     default: 'Javier Benitez Marin | AI Engineer',
     template: 'Javier Benitez Marin | %s',
   },
   description:
-    'Javier Benitez Marin is an AI Engineer building Generative AI and Computer Vision systems in production — RAG, multimodal fraud detection, and multi-agent orchestration.',
+    'Javier Benitez Marin is an AI Engineer building Generative AI systems in production — RAG, multimodal document intelligence, and multi-agent orchestration.',
   keywords: [
     'javier benitez marin',
     'javier benitez',
@@ -21,18 +22,22 @@ export const metadata: Metadata = {
     'langchain',
     'langgraph',
     'rag',
-    'computer vision',
+    'agentic ai',
     'multi-agent orchestration',
   ],
   openGraph: {
-    title: "Javier Benitez Marin's Portfolio",
+    type: 'website',
+    title: 'Javier Benitez Marin | AI Engineer',
     description:
-      'AI Engineer building Generative AI and Computer Vision systems in production.',
-    images: ['https://imgur.com/4zi5KkQ.png'],
-    url: 'https://vscode-portfolio.vercel.app',
+      'AI Engineer building agentic AI systems that make it to production.',
+    url: 'https://javierbenitezmarin.dev',
+    siteName: 'Javier Benitez Marin',
   },
   twitter: {
     card: 'summary_large_image',
+    title: 'Javier Benitez Marin | AI Engineer',
+    description:
+      'AI Engineer building agentic AI systems that make it to production.',
   },
 };
 
