@@ -5,13 +5,20 @@
   color: var(--primary-text, rgb(225, 228, 232));
 }
 
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
   color: rgb(140, 148, 158);
-  margin-bottom: 1.75rem;
   font-family: 'Source Code Pro', monospace;
 }
 
@@ -23,10 +30,87 @@
   color: rgb(200, 205, 212);
 }
 
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--tab-border, #30363d);
+  border-radius: 8px;
+  background: var(--tab-bg, rgba(255, 255, 255, 0.03));
+}
+
+.toggleButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: rgb(150, 157, 165);
+  font-size: 0.78rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.toggleButton:hover {
+  color: rgb(210, 215, 222);
+}
+
+.toggleActive {
+  background: var(--tab-active-bg, rgba(255, 255, 255, 0.08));
+  color: var(--accent-color, #58a6ff);
+}
+
+.raw {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgb(190, 196, 204);
+  background: var(--tabs-bg, #0d1117);
+  border: 1px solid var(--tab-border, #333);
+  border-radius: 8px;
+  padding: 1.25rem 1.4rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
 .markdown {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
+}
+
+.frontmatter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 2rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--tab-border, #30363d);
+  border-left: 3px solid var(--accent-color, #58a6ff);
+  border-radius: 8px;
+  background: var(--tab-bg, rgba(255, 255, 255, 0.03));
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+}
+
+.metaRow {
+  display: flex;
+  gap: 0.6rem;
+  line-height: 1.5;
+}
+
+.metaKey {
+  color: var(--accent-color, #58a6ff);
+  flex-shrink: 0;
+}
+
+.metaValue {
+  color: rgb(190, 196, 204);
 }
 
 .markdown h1 {

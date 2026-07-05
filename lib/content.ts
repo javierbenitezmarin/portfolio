@@ -13,6 +13,7 @@ export const readMarkdown = async (relativePath: string): Promise<string> => {
 export interface MarkdownDocument {
   content: string;
   data: Record<string, unknown>;
+  raw: string;
 }
 
 export const readMarkdownWithFrontmatter = async (
@@ -21,5 +22,5 @@ export const readMarkdownWithFrontmatter = async (
   const filePath = path.join(contentDir, relativePath);
   const raw = await fs.readFile(filePath, 'utf-8');
   const parsed = matter(raw);
-  return { content: parsed.content, data: parsed.data };
+  return { content: parsed.content, data: parsed.data, raw };
 };

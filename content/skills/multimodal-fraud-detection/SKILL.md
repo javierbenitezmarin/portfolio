@@ -1,15 +1,9 @@
 ---
-name: Multimodal Fraud Detection
+name: multimodal-fraud-detection
+description: Combine Computer Vision with multimodal LLMs to inspect documents and score risk. Use when a document pipeline needs to detect tampering, forgery, or anomalies that are visual as well as semantic, where text extraction alone misses the fraud.
 ---
 
 # Multimodal Fraud Detection
-
-> Combining Computer Vision with multimodal LLMs to inspect documents and score risk.
-
-## When to use
-
-Use this skill when a document pipeline needs to detect tampering, forgery, or anomalies
-that are visual as well as semantic — where text extraction alone misses the fraud.
 
 ## Approach
 

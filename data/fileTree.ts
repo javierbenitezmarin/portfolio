@@ -52,6 +52,12 @@ export const fileTree: FolderNode = {
             path: `/skills/${skill.slug}`,
             icon: 'skill' as const,
           },
+          ...(skill.references ?? []).map((ref) => ({
+            type: 'file' as const,
+            name: ref.name,
+            path: `/skills/${skill.slug}/${ref.slug}`,
+            icon: 'markdown' as const,
+          })),
         ],
       })),
     },

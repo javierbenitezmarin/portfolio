@@ -1,15 +1,9 @@
 ---
-name: RAG Systems
+name: rag-systems
+description: Build retrieval-augmented generation pipelines grounded in enterprise knowledge. Use when an LLM must answer over a private, changing corpus (internal docs, product data, regulated content) and hallucination is unacceptable.
 ---
 
 # RAG Systems
-
-> Retrieval-augmented generation pipelines grounded in enterprise knowledge.
-
-## When to use
-
-Use this skill when an LLM needs to answer over a private, changing corpus and
-hallucination is unacceptable — internal docs, product data, regulated content.
 
 ## Approach
 

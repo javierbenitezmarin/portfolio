@@ -1,15 +1,9 @@
 ---
-name: Document Intelligence
+name: document-intelligence
+description: Turn heterogeneous unstructured documents (invoices, contracts, reports, forms) into structured, decision-ready data. Use when a workflow depends on reliable extraction from messy, inconsistent documents at scale.
 ---
 
 # Document Intelligence
-
-> Turning heterogeneous unstructured documents into structured, decision-ready data.
-
-## When to use
-
-Use this skill when a workflow depends on extracting reliable structured data from messy,
-inconsistent documents — invoices, contracts, reports, forms — at scale.
 
 ## Approach
 

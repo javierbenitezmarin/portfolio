@@ -1,15 +1,9 @@
 ---
-name: Multi-Agent Orchestration
+name: multi-agent-orchestration
+description: Design agentic workflows with LangChain and LangGraph that stay observable and controllable. Use when a task is too complex for a single prompt and needs decomposition into cooperating agents (research, planning, tool use, verification) without losing control.
 ---
 
 # Multi-Agent Orchestration
-
-> Designing agentic workflows with LangChain and LangGraph that stay observable and controllable.
-
-## When to use
-
-Use this skill when a task is too complex for a single prompt and needs decomposition into
-cooperating agents — research, planning, tool use, verification — without losing control.
 
 ## Approach
 

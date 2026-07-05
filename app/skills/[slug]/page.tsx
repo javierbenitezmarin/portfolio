@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import MarkdownView from '@/components/MarkdownView';
-import { readMarkdown } from '@/lib/content';
+import { readMarkdownWithFrontmatter } from '@/lib/content';
 import { skills } from '@/data/skills';
 
 interface SkillPageProps {
@@ -29,8 +29,21 @@ export default async function SkillPage({ params }: SkillPageProps) {
     notFound();
   }
 
-  const content = await readMarkdown(`skills/${slug}/SKILL.md`);
+  const { content, data, raw } = await readMarkdownWithFrontmatter(
+    `skills/${slug}/SKILL.md`
+  );
+
+  const frontmatter = [
+    { label: 'name', value: String(data.name ?? slug) },
+    { label: 'description', value: String(data.description ?? '') },
+  ].filter((field) => field.value.length > 0);
+
   return (
-    <MarkdownView content={content} filename={`skills/${slug}/SKILL.md`} />
+    <MarkdownView
+      content={content}
+      rawContent={raw}
+      frontmatter={frontmatter}
+      filename={`skills/${slug}/SKILL.md`}
+    />
   );
 }
