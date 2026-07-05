@@ -1,0 +1,28 @@
+---
+name: Multi-Agent Orchestration
+---
+
+# Multi-Agent Orchestration
+
+> Designing agentic workflows with LangChain and LangGraph that stay observable and controllable.
+
+## When to use
+
+Use this skill when a task is too complex for a single prompt and needs decomposition into
+cooperating agents — research, planning, tool use, verification — without losing control.
+
+## Approach
+
+1. **Decompose** — model the workflow as a graph of specialised agents and tools.
+2. **Orchestrate** — LangGraph for explicit state, routing, and recovery from failures.
+3. **Stay LLM-agnostic** — swap between OpenAI, Gemini, and Claude behind one interface.
+4. **Observe** — trace every step with Langfuse: latency, cost, and errors.
+
+## Evidence
+
+- LLM-agnostic multi-agent framework powering an autonomous generative content pipeline
+  at scale with minimal human oversight.
+
+## Stack
+
+`LangChain` · `LangGraph` · `Langfuse` · `Python` · `Multi-Agent`

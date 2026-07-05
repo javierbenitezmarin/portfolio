@@ -10,6 +10,7 @@ import Bottombar from '@/components/Bottombar';
 import Tabsbar from '@/components/Tabsbar';
 import Terminal from '@/components/Terminal';
 import CommandPalette from '@/components/CommandPalette';
+import { TabsProvider } from '@/components/TabsProvider';
 
 import styles from '@/styles/Layout.module.css';
 
@@ -46,11 +47,11 @@ const Layout = ({ children }: LayoutProps) => {
   useEffect(() => {
     const navigationRoutes: Record<string, string> = {
       'h': '/',
-      'a': '/about',
+      'a': '/agents',
+      'e': '/experience',
       'p': '/projects',
-      'r': '/articles',
+      'b': '/blog',
       'c': '/contact',
-      'g': '/github',
       's': '/settings',
     };
 
@@ -102,29 +103,31 @@ const Layout = ({ children }: LayoutProps) => {
   }, [toggleTerminal, openCommandPalette, chordKey, router, isCommandPaletteOpen]);
 
   return (
-    <div className={styles.layout}>
-      <Titlebar onOpenCommandPalette={openCommandPalette} />
-      <div className={styles.main}>
-        <Sidebar />
-        <Explorer />
-        <div className={styles.editorContainer}>
-          <Tabsbar />
-          <div className={styles.editorWithTerminal}>
-            <main id="main-editor" className={styles.content}>
-              {children}
-            </main>
-            {isTerminalOpen && <Terminal onToggle={toggleTerminal} />}
+    <TabsProvider>
+      <div className={styles.layout}>
+        <Titlebar onOpenCommandPalette={openCommandPalette} />
+        <div className={styles.main}>
+          <Sidebar />
+          <Explorer />
+          <div className={styles.editorContainer}>
+            <Tabsbar />
+            <div className={styles.editorWithTerminal}>
+              <main id="main-editor" className={styles.content}>
+                {children}
+              </main>
+              {isTerminalOpen && <Terminal onToggle={toggleTerminal} />}
+            </div>
           </div>
         </div>
+        <Bottombar onTerminalToggle={toggleTerminal} isTerminalOpen={isTerminalOpen} />
+        <CommandPalette
+          isOpen={isCommandPaletteOpen}
+          onClose={closeCommandPalette}
+          onToggleTerminal={toggleTerminal}
+          isTerminalOpen={isTerminalOpen}
+        />
       </div>
-      <Bottombar onTerminalToggle={toggleTerminal} isTerminalOpen={isTerminalOpen} />
-      <CommandPalette
-        isOpen={isCommandPaletteOpen}
-        onClose={closeCommandPalette}
-        onToggleTerminal={toggleTerminal}
-        isTerminalOpen={isTerminalOpen}
-      />
-    </div>
+    </TabsProvider>
   );
 };
 

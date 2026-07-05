@@ -1,78 +1,143 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { VscChevronRight } from 'react-icons/vsc';
 
+import {
+  fileTree,
+  FolderNode,
+  iconSrc,
+  TreeNode,
+} from '@/data/fileTree';
+import { useTabs } from '@/components/TabsProvider';
+
 import styles from '@/styles/Explorer.module.css';
 
-const explorerItems = [
-  {
-    name: 'home.tsx',
-    path: '/',
-    icon: '/logos/react_icon.svg',
-  },
-  {
-    name: 'about.html',
-    path: '/about',
-    icon: '/logos/html_icon.svg',
-  },
-  {
-    name: 'contact.css',
-    path: '/contact',
-    icon: '/logos/css_icon.svg',
-  },
-  {
-    name: 'projects.js',
-    path: '/projects',
-    icon: '/logos/js_icon.svg',
-  },
-  {
-    name: 'articles.json',
-    path: '/articles',
-    icon: '/logos/json_icon.svg',
-  },
-  {
-    name: 'github.md',
-    path: '/github',
-    icon: '/logos/markdown_icon.svg',
-  },
-];
+const collectDefaultOpen = (node: TreeNode, acc: Set<string>): void => {
+  if (node.type === 'folder') {
+    if (node.defaultOpen) {
+      acc.add(node.id);
+    }
+    node.children.forEach((child) => collectDefaultOpen(child, acc));
+  }
+};
+
+const FileEntry = ({
+  node,
+  depth,
+}: {
+  node: Extract<TreeNode, { type: 'file' }>;
+  depth: number;
+}) => {
+  const { openTab, activePath } = useTabs();
+  const isActive = activePath === node.path;
+
+  return (
+    <div
+      className={`${styles.file} ${isActive ? styles.fileActive : ''}`}
+      style={{ paddingLeft: `${depth * 0.8 + 0.5}rem` }}
+      onClick={() => openTab(node.path)}
+    >
+      <Image src={iconSrc[node.icon]} alt={node.name} height={16} width={16} />
+      <p>{node.name}</p>
+    </div>
+  );
+};
+
+const FolderEntry = ({
+  node,
+  depth,
+  openFolders,
+  toggleFolder,
+}: {
+  node: FolderNode;
+  depth: number;
+  openFolders: Set<string>;
+  toggleFolder: (id: string) => void;
+}) => {
+  const isOpen = openFolders.has(node.id);
+
+  return (
+    <div>
+      <div
+        className={styles.folder}
+        style={{ paddingLeft: `${depth * 0.8 + 0.25}rem` }}
+        onClick={() => toggleFolder(node.id)}
+      >
+        <VscChevronRight
+          className={styles.chevron}
+          style={isOpen ? { transform: 'rotate(90deg)' } : {}}
+        />
+        <span>{node.name}</span>
+      </div>
+      {isOpen && (
+        <div>
+          {node.children.map((child) => (
+            <TreeEntry
+              key={child.type === 'file' ? child.path : child.id}
+              node={child}
+              depth={depth + 1}
+              openFolders={openFolders}
+              toggleFolder={toggleFolder}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const TreeEntry = ({
+  node,
+  depth,
+  openFolders,
+  toggleFolder,
+}: {
+  node: TreeNode;
+  depth: number;
+  openFolders: Set<string>;
+  toggleFolder: (id: string) => void;
+}) => {
+  if (node.type === 'file') {
+    return <FileEntry node={node} depth={depth} />;
+  }
+  return (
+    <FolderEntry
+      node={node}
+      depth={depth}
+      openFolders={openFolders}
+      toggleFolder={toggleFolder}
+    />
+  );
+};
 
 const Explorer = () => {
-  const [portfolioOpen, setPortfolioOpen] = useState(true);
+  const [openFolders, setOpenFolders] = useState<Set<string>>(() => {
+    const set = new Set<string>();
+    collectDefaultOpen(fileTree, set);
+    return set;
+  });
+
+  const toggleFolder = (id: string) => {
+    setOpenFolders((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
 
   return (
     <div className={styles.explorer}>
       <p className={styles.title}>Explorer</p>
-      <div>
-        <input
-          type="checkbox"
-          className={styles.checkbox}
-          id="portfolio-checkbox"
-          checked={portfolioOpen}
-          onChange={() => setPortfolioOpen(!portfolioOpen)}
-        />
-        <label htmlFor="portfolio-checkbox" className={styles.heading}>
-          <VscChevronRight
-            className={styles.chevron}
-            style={portfolioOpen ? { transform: 'rotate(90deg)' } : {}}
-          />
-          Portfolio
-        </label>
-        <div
-          className={styles.files}
-          style={portfolioOpen ? { display: 'block' } : { display: 'none' }}
-        >
-          {explorerItems.map((item) => (
-            <Link href={item.path} key={item.name}>
-              <div className={styles.file}>
-                <Image src={item.icon} alt={item.name} height={18} width={18} />{' '}
-                <p>{item.name}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <FolderEntry
+        node={fileTree}
+        depth={0}
+        openFolders={openFolders}
+        toggleFolder={toggleFolder}
+      />
     </div>
   );
 };

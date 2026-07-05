@@ -1,42 +1,52 @@
 export interface Project {
   title: string;
-  description: string;
-  logo: string;
-  link: string;
   slug: string;
+  description: string;
+  stack: string[];
+  role: string;
+  year: string;
+  link: string;
 }
 
 export const projects: Project[] = [
   {
-    title: 'Driwwwle',
+    title: 'DocFraud',
+    slug: 'docfraud',
     description:
-      'Discover creative websites and developers. A portal for you to share your projects.',
-    logo: '/logos/driwwwle.svg',
-    link: 'https://github.com/itsnitinr/driwwwle',
-    slug: 'driwwwle',
+      'Hybrid multimodal fraud detection engine combining Computer Vision with multimodal LLMs to automate visual document inspection and risk-level decisions.',
+    stack: ['Python', 'Computer Vision', 'Multimodal LLMs', 'FastAPI', 'AWS'],
+    role: 'AI Engineer @ M47 AI',
+    year: '2025',
+    link: 'https://github.com/javierbenitezmarin',
   },
   {
-    title: 'VSCode Portfolio',
+    title: 'Conversational Analytics Agent',
+    slug: 'conversational-analytics',
     description:
-      'A Visual Studio Code themed developer portfolio built with Next.js and CSS Modules.',
-    logo: '/logos/vsc.svg',
-    link: 'https://github.com/itsnitinr/vscode-portfolio',
-    slug: 'vscode-portfolio',
+      'Natural-language analytics agent on Snowflake Cortex letting upper management query enterprise data conversationally for faster decision-making.',
+    stack: ['Snowflake Cortex', 'LLMs', 'Python', 'SQL'],
+    role: 'AI Engineer @ M47 AI',
+    year: '2025',
+    link: 'https://github.com/javierbenitezmarin',
   },
   {
-    title: 'Subtrackt',
+    title: 'Autonomous Content Pipeline',
+    slug: 'autonomous-content-pipeline',
     description:
-      'A simple and elegant way to track your subscriptions and save money.',
-    logo: '/logos/subtrackt.svg',
-    link: 'https://github.com/itsnitinr/subtrackt',
-    slug: 'subtrackt',
+      'Fully automated multi-agent generative content system with a semantic deduplication engine and vector-based research agents, LLM-agnostic across OpenAI, Gemini and Claude.',
+    stack: ['LangChain', 'Python', 'Vector DBs', 'Multi-Agent'],
+    role: 'CTO @ Inspiring News',
+    year: '2025',
+    link: 'https://github.com/javierbenitezmarin',
   },
   {
-    title: 'Coolify Deployments',
+    title: 'GNN Cybersecurity Research',
+    slug: 'gnn-cybersecurity',
     description:
-      'VSCode extension to track and deploy your Coolify applications.',
-    logo: '/logos/coolify.svg',
-    link: 'https://github.com/itsnitinr/coolify-vscode-extension',
-    slug: 'coolify-vscode-extension',
+      'Graph Neural Network architectures for cybersecurity R&D, leading a scientific team as part of the company innovation roadmap.',
+    stack: ['GNN', 'PyTorch', 'Python', 'Research'],
+    role: 'ML Engineer @ Napptilus Tech Labs',
+    year: '2023',
+    link: 'https://github.com/javierbenitezmarin',
   },
 ];

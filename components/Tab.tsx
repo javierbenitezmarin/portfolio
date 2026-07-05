@@ -1,29 +1,48 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { VscClose } from 'react-icons/vsc';
 
+import { iconSrc, FileIconType } from '@/data/fileTree';
 import styles from '@/styles/Tab.module.css';
 
 interface TabProps {
-  icon: string;
+  icon: FileIconType;
   filename: string;
-  path: string;
+  isActive: boolean;
+  onSelect: () => void;
+  onClose: () => void;
 }
 
-const Tab = ({ icon, filename, path }: TabProps) => {
-  const pathname = usePathname();
+const Tab = ({ icon, filename, isActive, onSelect, onClose }: TabProps) => {
+  const handleClose = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    onClose();
+  };
+
+  const handleAuxClick = (event: React.MouseEvent) => {
+    if (event.button === 1) {
+      event.preventDefault();
+      onClose();
+    }
+  };
 
   return (
-    <Link href={path}>
-      <div
-        className={`${styles.tab} ${pathname === path && styles.active}`}
+    <div
+      className={`${styles.tab} ${isActive ? styles.active : ''}`}
+      onClick={onSelect}
+      onAuxClick={handleAuxClick}
+    >
+      <Image src={iconSrc[icon]} alt={filename} height={16} width={16} />
+      <p>{filename}</p>
+      <button
+        className={styles.close}
+        onClick={handleClose}
+        aria-label={`Close ${filename}`}
       >
-        <Image src={icon} alt={filename} height={18} width={18} />
-        <p>{filename}</p>
-      </div>
-    </Link>
+        <VscClose size={14} />
+      </button>
+    </div>
   );
 };
 

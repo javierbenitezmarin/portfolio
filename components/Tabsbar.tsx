@@ -1,24 +1,25 @@
+'use client';
+
 import Tab from '@/components/Tab';
+import { useTabs } from '@/components/TabsProvider';
 
 import styles from '@/styles/Tabsbar.module.css';
 
 const Tabsbar = () => {
+  const { openTabs, activePath, openTab, closeTab } = useTabs();
+
   return (
     <div className={styles.tabs}>
-      <Tab icon="/logos/react_icon.svg" filename="home.tsx" path="/" />
-      <Tab icon="/logos/html_icon.svg" filename="about.html" path="/about" />
-      <Tab icon="/logos/css_icon.svg" filename="contact.css" path="/contact" />
-      <Tab icon="/logos/js_icon.svg" filename="projects.js" path="/projects" />
-      <Tab
-        icon="/logos/json_icon.svg"
-        filename="articles.json"
-        path="/articles"
-      />
-      <Tab
-        icon="/logos/markdown_icon.svg"
-        filename="github.md"
-        path="/github"
-      />
+      {openTabs.map((tab) => (
+        <Tab
+          key={tab.path}
+          icon={tab.icon}
+          filename={tab.name}
+          isActive={activePath === tab.path}
+          onSelect={() => openTab(tab.path)}
+          onClose={() => closeTab(tab.path)}
+        />
+      ))}
     </div>
   );
 };

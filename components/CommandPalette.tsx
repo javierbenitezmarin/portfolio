@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { VscSymbolColor, VscTerminal, VscFiles, VscGoToFile, VscGear, VscColorMode, VscHome, VscAccount, VscCode, VscBook, VscMail, VscGithubAlt } from 'react-icons/vsc';
+import { VscSymbolColor, VscTerminal, VscGoToFile, VscGear, VscColorMode, VscHome, VscAccount, VscCode, VscBook, VscMail, VscHistory } from 'react-icons/vsc';
 import { MdNavigateNext } from 'react-icons/md';
 
 import { THEMES } from '@/lib/themes';
@@ -43,12 +43,20 @@ const CommandPalette = ({ isOpen, onClose, onToggleTerminal, isTerminalOpen }: C
         action: () => router.push('/'),
       },
       {
-        id: 'go-about',
-        label: 'Go to About',
+        id: 'go-agents',
+        label: 'Go to AGENTS.md',
         category: 'Navigation',
         shortcut: 'G A',
         icon: <VscAccount size={16} />,
-        action: () => router.push('/about'),
+        action: () => router.push('/agents'),
+      },
+      {
+        id: 'go-experience',
+        label: 'Go to Experience',
+        category: 'Navigation',
+        shortcut: 'G E',
+        icon: <VscHistory size={16} />,
+        action: () => router.push('/experience'),
       },
       {
         id: 'go-projects',
@@ -59,12 +67,12 @@ const CommandPalette = ({ isOpen, onClose, onToggleTerminal, isTerminalOpen }: C
         action: () => router.push('/projects'),
       },
       {
-        id: 'go-articles',
-        label: 'Go to Articles',
+        id: 'go-blog',
+        label: 'Go to Blog',
         category: 'Navigation',
-        shortcut: 'G R',
+        shortcut: 'G B',
         icon: <VscBook size={16} />,
-        action: () => router.push('/articles'),
+        action: () => router.push('/blog'),
       },
       {
         id: 'go-contact',
@@ -73,14 +81,6 @@ const CommandPalette = ({ isOpen, onClose, onToggleTerminal, isTerminalOpen }: C
         shortcut: 'G C',
         icon: <VscMail size={16} />,
         action: () => router.push('/contact'),
-      },
-      {
-        id: 'go-github',
-        label: 'Go to GitHub',
-        category: 'Navigation',
-        shortcut: 'G G',
-        icon: <VscGithubAlt size={16} />,
-        action: () => router.push('/github'),
       },
       {
         id: 'go-settings',
@@ -265,7 +265,7 @@ const CommandPalette = ({ isOpen, onClose, onToggleTerminal, isTerminalOpen }: C
             (() => {
               let lastCategory = '';
               let itemIndex = 0;
-              return filteredCommands.map((cmd, index) => {
+              return filteredCommands.map((cmd) => {
                 const showCategory = cmd.category !== lastCategory;
                 lastCategory = cmd.category;
                 const currentIndex = itemIndex++;

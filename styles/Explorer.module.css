@@ -37,20 +37,44 @@
   cursor: pointer;
 }
 
+.folder {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: rgb(225, 228, 232);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.folder span {
+  margin-left: 3px;
+}
+
+.folder:hover {
+  background: var(--explorer-hover-bg);
+}
+
 .file {
   padding: 0.2rem 1rem;
   display: flex;
   align-items: center;
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: white;
   text-decoration: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .file p {
-  margin-left: 5px;
+  margin-left: 6px;
 }
 
 .file:hover {
+  background: var(--explorer-hover-bg);
+}
+
+.fileActive {
   background: var(--explorer-hover-bg);
 }
 

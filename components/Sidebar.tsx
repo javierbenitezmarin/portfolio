@@ -6,24 +6,24 @@ import {
   VscAccount,
   VscSettings,
   VscMail,
-  VscGithubAlt,
   VscCode,
   VscFiles,
-  VscEdit,
+  VscBook,
+  VscHistory,
 } from 'react-icons/vsc';
 
 import styles from '@/styles/Sidebar.module.css';
 
 const sidebarTopItems = [
   { Icon: VscFiles, path: '/' },
-  { Icon: VscGithubAlt, path: '/github' },
+  { Icon: VscAccount, path: '/agents' },
   { Icon: VscCode, path: '/projects' },
-  { Icon: VscEdit, path: '/articles' },
+  { Icon: VscBook, path: '/blog' },
   { Icon: VscMail, path: '/contact' },
 ];
 
 const sidebarBottomItems = [
-  { Icon: VscAccount, path: '/about' },
+  { Icon: VscHistory, path: '/experience' },
   { Icon: VscSettings, path: '/settings' },
 ];
 

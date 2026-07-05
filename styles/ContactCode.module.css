@@ -50,6 +50,11 @@
   color: var(--accent-color);
 }
 
+.comment {
+  color: grey;
+  font-style: italic;
+}
+
 @media screen and (max-width: 600px) {
   .code {
     font-size: 0.85rem;

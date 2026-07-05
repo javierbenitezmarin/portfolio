@@ -1,0 +1,148 @@
+.doc {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  color: var(--primary-text, rgb(225, 228, 232));
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: rgb(140, 148, 158);
+  margin-bottom: 1.75rem;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.separator {
+  opacity: 0.5;
+}
+
+.filename {
+  color: rgb(200, 205, 212);
+}
+
+.markdown {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.markdown h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--tab-border, #333);
+}
+
+.markdown h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 2.2rem 0 0.9rem;
+}
+
+.markdown h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 1.6rem 0 0.6rem;
+}
+
+.markdown p {
+  margin: 0 0 1rem;
+  color: rgb(190, 196, 204);
+}
+
+.markdown a {
+  color: var(--accent-color, #58a6ff);
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+  color: rgb(190, 196, 204);
+}
+
+.markdown li {
+  margin-bottom: 0.4rem;
+}
+
+.markdown li::marker {
+  color: var(--accent-color, #58a6ff);
+}
+
+.markdown strong {
+  color: rgb(225, 228, 232);
+  font-weight: 600;
+}
+
+.markdown blockquote {
+  margin: 0 0 1rem;
+  padding: 0.5rem 1rem;
+  border-left: 3px solid var(--accent-color, #58a6ff);
+  background: var(--tab-bg, rgba(255, 255, 255, 0.03));
+  color: rgb(170, 176, 184);
+}
+
+.markdown code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85em;
+  background: var(--tab-bg, rgba(255, 255, 255, 0.06));
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  color: rgb(210, 215, 222);
+}
+
+.markdown pre {
+  background: var(--tabs-bg, #0d1117);
+  border: 1px solid var(--tab-border, #333);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  margin: 0 0 1.2rem;
+}
+
+.markdown pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.2rem;
+  font-size: 0.9rem;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid var(--tab-border, #333);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.markdown th {
+  background: var(--tab-bg, rgba(255, 255, 255, 0.04));
+  color: rgb(225, 228, 232);
+}
+
+.markdown hr {
+  border: none;
+  border-top: 1px solid var(--tab-border, #333);
+  margin: 2rem 0;
+}
+
+@media screen and (max-width: 600px) {
+  .doc {
+    padding: 1.5rem 1.25rem 3rem;
+  }
+}

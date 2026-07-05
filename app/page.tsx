@@ -19,16 +19,16 @@ export default function HomePage() {
           <div className={styles.intro}>
             <p className={styles.greeting}>Hello, I&apos;m</p>
             
-            <h1 className={styles.name}>Nitin Ranganath</h1>
+            <h1 className={styles.name}>Javier Benitez Marin</h1>
             
-            <p className={styles.role}>Full Stack Developer</p>
+            <p className={styles.role}>AI Engineer</p>
             
             <div className={styles.divider} />
             
             <p className={styles.description}>
-              I craft clean, performant web applications with modern technologies. 
-              Specialized in TypeScript, React, Node.js, and building products 
-              that users love.
+              I build Generative AI and Computer Vision systems that survive contact 
+              with the real world. Comfortable across the whole stack — from infrastructure 
+              and CI/CD up to LLM pipelines, RAG, and multi-agent orchestration.
             </p>
           </div>
 
@@ -38,14 +38,14 @@ export default function HomePage() {
               <VscArrowRight size={18} />
             </Link>
             
-            <Link href="/about" className={styles.secondaryAction}>
-              <span>Learn More</span>
+            <Link href="/agents" className={styles.secondaryAction}>
+              <span>Read AGENTS.md</span>
             </Link>
           </div>
 
           <div className={styles.links}>
             <a 
-              href="https://github.com/itsnitinr" 
+              href="https://github.com/javierbenitezmarin" 
               target="_blank" 
               rel="noopener noreferrer"
               className={styles.link}

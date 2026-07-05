@@ -7,26 +7,27 @@ import '@/styles/themes.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Nitin Ranganath | Portfolio',
-    template: 'Nitin Ranganath | %s',
+    default: 'Javier Benitez Marin | AI Engineer',
+    template: 'Javier Benitez Marin | %s',
   },
   description:
-    "Nitin Ranganath is an avid full stack web developer building websites and applications you'd love to use",
+    'Javier Benitez Marin is an AI Engineer building Generative AI and Computer Vision systems in production — RAG, multimodal fraud detection, and multi-agent orchestration.',
   keywords: [
-    'nitin ranganath',
-    'nitin',
-    'ranganath',
-    'web developer portfolio',
-    'nitin web developer',
-    'nitin developer',
-    'mern stack',
-    'nitin ranganath portfolio',
-    'vscode-portfolio',
+    'javier benitez marin',
+    'javier benitez',
+    'ai engineer',
+    'ai engineer portfolio',
+    'llm engineer',
+    'langchain',
+    'langgraph',
+    'rag',
+    'computer vision',
+    'multi-agent orchestration',
   ],
   openGraph: {
-    title: "Nitin Ranganath's Portfolio",
+    title: "Javier Benitez Marin's Portfolio",
     description:
-      "A full-stack developer building websites that you'd like to use.",
+      'AI Engineer building Generative AI and Computer Vision systems in production.',
     images: ['https://imgur.com/4zi5KkQ.png'],
     url: 'https://vscode-portfolio.vercel.app',
   },
